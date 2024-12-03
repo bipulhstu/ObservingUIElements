@@ -8,15 +8,24 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var showLogo: Bool = true
+    @ObservedObject var myClass = MyClass()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        VStack{
+//            if showLogo{
+//                LittleLemonLogo(bindingVariable: $showLogo)
+//            }
+            
+            if myClass.showLogo{
+                LittleLemonLogo2(myClass: myClass)
+            }
         }
-        .padding()
     }
+}
+
+class MyClass: ObservableObject{
+    @Published var showLogo = true
 }
 
 #Preview {
